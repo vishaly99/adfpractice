@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "my-adftest001"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase_password": {
+			"value": ""
+		},
+		"VishalSqlServer_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sttestdatalake001.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://vishalazurekeyvault001.vault.azure.net/"
+		},
+		"AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "vishalsqlserver001.database.windows.net"
+		},
+		"AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "vishalsqldatabase"
+		},
+		"AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "vishalroot"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_server": {
+			"value": "vishalsqlserver001.database.windows.net"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_database": {
+			"value": "vishalsqldatabase"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "vishalroot"
+		},
+		"VishalSqlServer_properties_typeProperties_server": {
+			"value": "GAXL-PG034X7F\\SQLEXPRESS"
+		},
+		"VishalSqlServer_properties_typeProperties_database": {
+			"value": "customerdb"
+		},
+		"VishalSqlServer_properties_typeProperties_userName": {
+			"value": "root"
+		}
+	}
+}

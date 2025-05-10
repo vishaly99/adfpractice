@@ -1,0 +1,167 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "my-adftest001"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureSqlDatabase_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase'"
+		},
+		"VishalSqlServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'VishalSqlServer'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sttestdatalake001.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://vishalazurekeyvault001.vault.azure.net/"
+		},
+		"AzureSqlDatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "vishalsqlserver001.database.windows.net"
+		},
+		"AzureSqlDatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vishalsqldatabase"
+		},
+		"AzureSqlDatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "vishalroot"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "vishalsqlserver001.database.windows.net"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vishalsqldatabase"
+		},
+		"KeyVaultAzureSqlDatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "vishalroot"
+		},
+		"VishalSqlServer_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "GAXL-PG034X7F\\SQLEXPRESS"
+		},
+		"VishalSqlServer_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "customerdb"
+		},
+		"VishalSqlServer_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "root"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "my-adftest001_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureSqlDatabase_password": {
+						"value": "[parameters('AzureSqlDatabase_password')]"
+					},
+					"VishalSqlServer_password": {
+						"value": "[parameters('VishalSqlServer_password')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureSqlDatabase_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase_properties_typeProperties_userName')]"
+					},
+					"KeyVaultAzureSqlDatabase_properties_typeProperties_server": {
+						"value": "[parameters('KeyVaultAzureSqlDatabase_properties_typeProperties_server')]"
+					},
+					"KeyVaultAzureSqlDatabase_properties_typeProperties_database": {
+						"value": "[parameters('KeyVaultAzureSqlDatabase_properties_typeProperties_database')]"
+					},
+					"KeyVaultAzureSqlDatabase_properties_typeProperties_userName": {
+						"value": "[parameters('KeyVaultAzureSqlDatabase_properties_typeProperties_userName')]"
+					},
+					"VishalSqlServer_properties_typeProperties_server": {
+						"value": "[parameters('VishalSqlServer_properties_typeProperties_server')]"
+					},
+					"VishalSqlServer_properties_typeProperties_database": {
+						"value": "[parameters('VishalSqlServer_properties_typeProperties_database')]"
+					},
+					"VishalSqlServer_properties_typeProperties_userName": {
+						"value": "[parameters('VishalSqlServer_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "my-adftest001_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'my-adftest001_ArmTemplate_0')]"
+			]
+		}
+	]
+}
