@@ -2035,21 +2035,13 @@
 						"typeProperties": {
 							"waitTimeInSeconds": 1
 						}
-					},
-					{
-						"name": "Wait2",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2025-05-10T08:30:58Z"
 			},
 			"dependsOn": []
 		},
