@@ -1,0 +1,72 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Class18_DataFlow_DataSet",
+						"type": "DatasetReference"
+					},
+					"name": "DepartmentSource"
+				},
+				{
+					"dataset": {
+						"referenceName": "Class18_DataFlow_DataSet",
+						"type": "DatasetReference"
+					},
+					"name": "EmployeeSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Class18_DataFlow_DataSet",
+						"type": "DatasetReference"
+					},
+					"name": "CombinedData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          DepartmentID as string,",
+				"          DepartmentName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DepartmentSource",
+				"source(output(",
+				"          DepartmentID as string,",
+				"          DepartmentName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> EmployeeSource",
+				"DepartmentSource, EmployeeSource join(DepartmentSource@DepartmentID == EmployeeSource@DepartmentID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          DepartmentID as string,",
+				"          DepartmentName as string",
+				"     ),",
+				"     partitionFileNames:['CombinedSingleData.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> CombinedData"
+			]
+		}
+	}
+}

@@ -1,0 +1,51 @@
+{
+	"name": "Dataflow_Parition",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ParitionSource",
+						"type": "DatasetReference"
+					},
+					"name": "EmployeeSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ParitionSink",
+						"type": "DatasetReference"
+					},
+					"name": "EmployeeSink"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          DateOfBirth as string,",
+				"          Gender as string,",
+				"          DepartmentID as string,",
+				"          Salary as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> EmployeeSource",
+				"EmployeeSource sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('dynamicRange', 2,",
+				"          DepartmentID",
+				"     )) ~> EmployeeSink"
+			]
+		}
+	}
+}

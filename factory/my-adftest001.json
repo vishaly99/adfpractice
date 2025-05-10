@@ -1,0 +1,17 @@
+{
+	"name": "my-adftest001",
+	"properties": {
+		"globalParameters": {
+			"env": {
+				"type": "string",
+				"value": "dev"
+			}
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b1ba331e-ce96-4f86-aee5-d060d51cb48e",
+		"tenantId": "32370a94-accb-4292-b4bc-d9f96a1e6257"
+	}
+}
