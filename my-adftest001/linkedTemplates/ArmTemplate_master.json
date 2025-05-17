@@ -103,9 +103,6 @@
 					"AzureSqlDatabase_password": {
 						"value": "[parameters('AzureSqlDatabase_password')]"
 					},
-					"VishalSqlServer_password": {
-						"value": "[parameters('VishalSqlServer_password')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -120,6 +117,27 @@
 					},
 					"AzureSqlDatabase_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "my-adftest001_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"VishalSqlServer_password": {
+						"value": "[parameters('VishalSqlServer_password')]"
 					},
 					"KeyVaultAzureSqlDatabase_properties_typeProperties_server": {
 						"value": "[parameters('KeyVaultAzureSqlDatabase_properties_typeProperties_server')]"
@@ -141,16 +159,18 @@
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'my-adftest001_ArmTemplate_0')]"
+			]
 		},
 		{
-			"name": "my-adftest001_ArmTemplate_1",
+			"name": "my-adftest001_ArmTemplate_2",
 			"type": "Microsoft.Resources/deployments",
 			"apiVersion": "2024-03-01",
 			"properties": {
 				"mode": "incremental",
 				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
 					"contentVersion": "1.0.0.0"
 				},
 				"parameters": {
@@ -160,7 +180,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'my-adftest001_ArmTemplate_0')]"
+				"[resourceId('Microsoft.Resources/deployments', 'my-adftest001_ArmTemplate_1')]"
 			]
 		}
 	]
