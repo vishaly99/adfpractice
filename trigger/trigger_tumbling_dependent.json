@@ -2,7 +2,7 @@
 	"name": "trigger_tumbling_dependent",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipeline": {
 			"pipelineReference": {
 				"referenceName": "Pipeline1_tumbling_dependent",
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"frequency": "Minute",
 			"interval": 5,
-			"startTime": "2025-05-17T11:00:00Z",
+			"startTime": "2025-05-17T10:40:00Z",
 			"delay": "00:00:00",
 			"maxConcurrency": 50,
 			"retryPolicy": {
